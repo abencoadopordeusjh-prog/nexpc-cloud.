@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexPC</title>
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;color:#eef6ff;
+  font-family:Arial,sans-serif;
+   background:linear-gradient(135deg,#071321,#101d35,#07101e);
+    min-height:100vh;overflow-x:hidden
+    }
+    header{
+     padding:20px;display:flex;justify-content:space-between;
+      align-items:center;background:#101c2bd9;
+       border-bottom:1px solid #28435c
+       }
+       .logo{font-size:23px;font-weight:bold;color:#65caff}
+       main{padding:24px;max-width:1100px;margin:auto}
+       h1{font-size:32px;margin-bottom:5px}
+       .sub{color:#91a9c1}
+       .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:30px}
+       .card{
+        background:#17283a;border:1px solid #29445f;
+         border-radius:18px;padding:22px;min-height:145px;
+          cursor:pointer;transition:.2s
+          }
+          .card:hover{border-color:#62caff;transform:translateY(-3px)}
+          .emoji{font-size:32px}
+          .card h2{margin:12px 0 6px;font-size:20px}
+          .card p{color:#9eb2c7;font-size:14px}
+          button{
+           background:#193a56;color:white;border:1px solid #39658a;
+            border-radius:10px;padding:12px 16px;cursor:pointer
+            }
+            button:hover{background:#24577c}
+            #content{margin-top:25px}
+            .game{
+             background:#17283a;border:1px solid #29445f;
+              border-radius:14px;padding:16px;margin:12px 0
+              }
+              .game button{margin-top:10px}
+              footer{
+               position:fixed;bottom:0;left:0;right:0;
+                background:#101c2bee;border-top:1px solid #29445f;
+                 display:flex;justify-content:center;gap:28px;padding:13px
+                 }
+                 footer button{background:transparent;border:0;font-size:20px}
+                 .hidden{display:none}
+                 input{color:white}
+                 </style>
+                 </head>
+                 <body>
+                 <header>
+                  <div class="logo">✦ NexPC</div>
+                   <div id="clock">NexPC OS</div>
+                   </header>
+
+                   <main>
+                    <section id="home">
+                      <p class="sub">SEU COMPUTADOR NA NUVEM</p>
+                        <h1>Bem-vindo ao NexPC.</h1>
+                          <p class="sub">Beyond the ordinary.</p>
+
+                            <div class="grid">
+                               <div class="card" onclick="openPage('library')">
+                                   <div class="emoji">🎮</div>
+                                       <h2>Biblioteca</h2>
+                                           <p>Explore jogos gratuitos.</p>
+                                              </div>
+                                                 <div class="card" onclick="openPage('files')">
+                                                     <div class="emoji">📁</div>
+                                                         <h2>Arquivos</h2>
+                                                             <p>Downloads e unidade D:.</p>
+                                                                </div>
+                                                                   <div class="card" onclick="openPage('settings')">
+                                                                       <div class="emoji">⚙️</div>
+                                                                           <h2>Configurações</h2>
+                                                                               <p>Em desenvolvimento.</p>
+                                                                                  </div>
+                                                                                    </div>
+                                                                                     </section>
+
+                                                                                      <section id="content" class="hidden"></section>
+                                                                                      </main>
+
+                                                                                      <footer>
+                                                                                       <button onclick="openPage('home')">⌂</button>
+                                                                                        <button onclick="openPage('library')">🎮</button>
+                                                                                         <button onclick="openPage('files')">📁</button>
+                                                                                          <button onclick="openPage('settings')">⚙️</button>
+                                                                                          </footer>
+
+                                                                                          <script>
+                                                                                          const content=document.getElementById('content');
+
+                                                                                          function openPage(page){
+                                                                                           document.getElementById('home').classList.toggle('hidden',page!=='home');
+                                                                                            content.classList.toggle('hidden',page==='home');
+
+                                                                                             if(page==='home')return;
+
+                                                                                              if(page==='library'){
+                                                                                               content.innerHTML=`
+                                                                                                <button onclick="openPage('home')">← Voltar</button>
+                                                                                                 <h1>🎮 Biblioteca</h1>
+                                                                                                  <p class="sub">Jogos gratuitos e projetos autorizados.</p>
+
+                                                                                                   <div class="game">
+                                                                                                    <h2>Minecraft Classic</h2>
+                                                                                                     <p>Experimente a versão clássica disponibilizada oficialmente no navegador.</p>
+                                                                                                      <button onclick="window.open('https://classic.minecraft.net/','_blank')">Jogar ↗</button>
+                                                                                                       </div>
+
+                                                                                                        <div class="game">
+                                                                                                         <h2>Friday Night Funkin'</h2>
+                                                                                                          <p>Jogue a versão disponibilizada oficialmente pelos criadores.</p>
+                                                                                                           <button onclick="window.open('https://www.newgrounds.com/portal/view/770371','_blank')">Abrir jogo ↗</button>
+                                                                                                            </div>
+
+                                                                                                             <div class="game">
+                                                                                                              <h2>Mais jogos</h2>
+                                                                                                               <p>Novos jogos serão adicionados à biblioteca.</p>
+                                                                                                                </div>`;
+                                                                                                                 }
+
+                                                                                                                  if(page==='files'){
+                                                                                                                   content.innerHTML=`
+                                                                                                                    <button onclick="openPage('home')">← Voltar</button>
+                                                                                                                     <h1>📁 Arquivos</h1>
+                                                                                                                      <p class="sub">Gerenciador de arquivos NexPC.</p>
+                                                                                                                       <div class="game">
+                                                                                                                        <h2>💾 Unidade D:</h2>
+                                                                                                                         <p>Área de arquivos do NexPC.</p>
+                                                                                                                          <input type="file" id="filePicker" multiple>
+                                                                                                                           <p id="fileList">Nenhum arquivo selecionado.</p>
+                                                                                                                            </div>
+                                                                                                                             <div class="game">
+                                                                                                                              <h2>💻 Unidade C:</h2>
+                                                                                                                               <p>Em desenvolvimento.</p>
+                                                                                                                                </div>
+                                                                                                                                 <div class="game">
+                                                                                                                                  <h2>📂 Unidade A:</h2>
+                                                                                                                                   <p>Em desenvolvimento.</p>
+                                                                                                                                    </div>`;
+                                                                                                                                     const picker=document.getElementById('filePicker');
+                                                                                                                                      picker.onchange=()=>{
+                                                                                                                                       const files=Array.from(picker.files);
+                                                                                                                                        document.getElementById('fileList').textContent=
+                                                                                                                                         files.length?files.map(f=>f.name).join(' • '):'Nenhum arquivo selecionado.';
+                                                                                                                                          };
+                                                                                                                                           }
+
+                                                                                                                                            if(page==='settings'){
+                                                                                                                                             content.innerHTML=`
+                                                                                                                                              <button onclick="openPage('home')">← Voltar</button>
+                                                                                                                                               <h1>⚙️ Configurações</h1>
+                                                                                                                                                <div class="game">
+                                                                                                                                                 <h2>Em desenvolvimento</h2>
+                                                                                                                                                  <p>Personalização e ajustes chegarão em breve.</p>
+                                                                                                                                                   </div>`;
+                                                                                                                                                    }
+                                                                                                                                                    }
+
+                                                                                                                                                    function updateClock(){
+                                                                                                                                                     document.getElementById('clock').textContent=
+                                                                                                                                                      new Date().toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+                                                                                                                                                      }
+                                                                                                                                                      updateClock();
+                                                                                                                                                      setInterval(updateClock,1000);
+                                                                                                                                                      </script>
+                                                                                                                                                      </body>
+                                                                                                                                                      </html>
+                                                                                                                                                      
